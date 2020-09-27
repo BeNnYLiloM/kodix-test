@@ -1,0 +1,25 @@
+.btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  padding: 0
+  outline: none
+  cursor: pointer
+  font-size: 14px
+  border-radius: 20px
+  border: none
+  transition: .2s ease-out
+  min-height: 29px
+
+  &-fill
+    &-black
+      background: $darkColor
+      color: #fff
+
+      @media (min-width: 720px)
+        background: #F5F6F6
+        color: $darkColor
+
+      &:hover
+        background: $darkColor
+        color: #fff

@@ -1,12 +1,11 @@
-import {CarListApp} from '../../core/CarListApp';
 import { Header } from '../Header/Header';
 import { AddCar } from '../AddCar/AddCar';
 import { CarList } from '../CarList/CarList';
+import { Footer } from '../Footer/Footer';
 import { createStore } from '../../store/createStore';
 import { initialState } from '../../redux/initialState';
 import { rootReducer } from '../../redux/rootReducer';
 import { CAR_LIST_URL } from '../../constants';
-import { ADD_CAR_LIST } from '../../redux/actionTypes';
 import { addCarList } from '../../redux/actions';
 
 export class App {
@@ -18,6 +17,7 @@ export class App {
 
   init() {
     let store = createStore(rootReducer, initialState);
+    const components = [Header, AddCar, CarList, Footer];
 
     fetch(CAR_LIST_URL)
       .then(response => response.json())
@@ -25,12 +25,8 @@ export class App {
         store.dispatch(addCarList(data), 'changeCarList');
       });
 
-    this.carListApp = new CarListApp({
-      components: [Header, AddCar, CarList],
-      root: this.$root,
-      store
-    });
+    this.components = components.map(Component => new Component(this.$root, store));
 
-    this.carListApp.init();
+    this.components.forEach(Component => Component.create());
   }
 }

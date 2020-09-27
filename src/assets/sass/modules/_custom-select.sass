@@ -1,0 +1,70 @@
+.custom-select
+  position: relative
+  width: 100%
+  font-size: 14px
+
+  &._selected
+    .custom-select
+      &__selected
+        border-bottom-color: $darkColor
+        color: $darkColor
+
+  &._open
+    .custom-select
+      &__selected
+        border-bottom-color: $darkColor
+
+        &::after
+          transform: rotate(180deg)
+
+      &__dropdown
+        padding: 6px 0
+        border-color: $grayLightColor
+        height: 120px
+
+  &__selected
+    cursor: pointer
+    height: 40px
+    padding: 0 10px
+    display: flex
+    align-items: center
+    border: 1px solid $grayLightColor
+    border-bottom-width: 2px
+    transition: .2s ease-out
+    padding-top: 2px
+    background: #fff
+    color: $grayColor
+
+    &:hover
+      border-bottom-color: $redColor
+
+    &::after
+      content: ''
+      border-top: 4px solid #3B3B3B
+      border-left: 4px solid transparent
+      border-right: 4px solid transparent
+      position: absolute
+      top: 19px
+      right: 20px
+      transition: .2s ease-out
+
+  &__dropdown
+    position: absolute
+    top: 100%
+    background: #fff
+    z-index: 10
+    border: 1px solid transparent
+    border-top: none
+    width: 100%
+    height: 0
+    overflow-y: auto
+
+    .item
+      padding: 6px 10px
+      color: $grayColor
+      cursor: pointer
+      transition: .2s ease-out
+      line-height: 1.7
+
+      &:hover
+        color: $darkColor
