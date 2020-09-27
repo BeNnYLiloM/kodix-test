@@ -39,6 +39,7 @@ export class Form {
 
         if (th) {
           th.classList.remove('_error');
+          this.form.classList.remove('_error');
         }
       });
     })

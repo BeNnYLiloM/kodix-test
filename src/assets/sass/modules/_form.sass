@@ -21,8 +21,11 @@
     margin: 0 8px
     flex: 1
     position: relative
-    margin-bottom: 30px
+    margin-bottom: 40px
     width: 100%
+
+    @media (min-width: 720px)
+      margin-bottom: 30px
 
     &._inputed
       .form
@@ -54,6 +57,9 @@
     outline: none
     padding: 0 10px
     transition: .2s ease-out
+    position: relative
+    z-index: 2
+    background: none
 
     &:focus
       border-bottom-color: $redColor
